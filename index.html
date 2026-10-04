@@ -50,10 +50,31 @@
         width: 100%;
         height: 100%;
       }
+      /* Read out by assistive technology and shown to nobody: clipped to nothing,
+         not removed, because a region that is not rendered is not announced. */
+      #announcer {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
     </style>
-    <script type="module" crossorigin src="./assets/index-1vKcCOGz.js"></script>
+    <script type="module" crossorigin src="./assets/index-BBb-yr1_.js"></script>
   </head>
   <body>
-    <div id="game"></div>
+    <!--
+      The game is one canvas, which a screen reader cannot see into. The container
+      says what it is (its name is set from the string table when the game starts),
+      and the line under it is told what has just happened: the case, the verdict,
+      the end of the run.
+    -->
+    <div id="game" role="application"></div>
+    <div id="announcer" aria-live="polite"></div>
   </body>
 </html>
